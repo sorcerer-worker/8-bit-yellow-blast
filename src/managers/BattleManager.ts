@@ -1,13 +1,13 @@
-import { User } from "../structures/User";
+import { User, UserData } from "../structures/User";
 
 class Stats {
 
     user1: User;
     user2: User;
 
-    constructor(user1: User, user2: User) {
-        this.user1 = user1;
-        this.user2 = user2;
+    constructor(user1: UserData, user2: UserData) {
+        this.user1 = new User(user1);
+        this.user2 = new User(user2);
     }
 }
 
