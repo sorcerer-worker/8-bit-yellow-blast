@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/sorcerer-worker/8-bit-yellow-blast/issues"
   },
-  "homepage": "https://github.com/sorcerer-worker/8-bit-yellow-blast#readme"
+  "homepage": "https://github.com/sorcerer-worker/8-bit-yellow-blast#readme",
+  "devDependencies": {
+    "@types/jest": "^28.1.4",
+    "jest": "^28.1.2",
+    "ts-jest": "^28.0.5",
+    "typescript": "^4.7.4"
+  }
 }
