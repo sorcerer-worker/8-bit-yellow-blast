@@ -1,40 +1,17 @@
-import { convert } from "./convert"
+import { UserData } from "../structures/User";
+import { convert } from "./convert";
 
+// json files
+import mockUser from "../__mock__/mockUser.json"
+import mockConfig from "../__mock__/mockConfig.json"
 
-const mockUser = {
-    "characterName": "Test User",
-    "class": "warrior",
-    "pouch": 98638,
-    "pvp": false,
-    "inventory": {
-      "weapons": [],
-      "consumables": [],
-      "classSkills": [],
-      "otherSkills": []
-    },
-    "health": {
-      "currentHealth": 10,
-      "maxHealth": 10
-    },
-    "level": {
-      "currentLevel": 1
-    },
-    "stats": {
-      "strength": 5,
-      "defense": 5,
-      "speed": 28,
-      "vitality": 10,
-      "intelligence": 5,
-      "magicResistance": 5
-    }
-  }
-
-const mockConfig = {
-    "name": "characterName"
-}
+let converted: UserData;
 
 describe("convert utility tool", () => {
+    beforeAll(() => {
+        converted = convert(mockUser, mockConfig)
+    })
     it("runs successful conversion", () => {
-        expect(convert(mockUser, mockConfig)).toBeTruthy();
+        expect(converted).toBeTruthy();
     })
 })
