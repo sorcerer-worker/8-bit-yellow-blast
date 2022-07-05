@@ -1,4 +1,3 @@
-// import mapObject, {mapObjectSkip, Mapper} from 'map-obj';
 import { User, UserData } from "../structures/User";
 
 type Configuration = {
