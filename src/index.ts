@@ -1,9 +1,14 @@
 import { BattleManager } from "./managers/BattleManager";
 import { ConfigManager, Configuration } from "./managers/ConfigManager"
 import { UserData } from "./structures/User";
+import { convert } from "./utils/convert";
+
+const utils = {
+    convert
+}
 
 function isUserData(user: UserData | any): user is UserData {
-    return (user as UserData).name !== undefined;
+    return user.name !== undefined;
 }
 class Battle extends BattleManager {
 
@@ -11,18 +16,18 @@ class Battle extends BattleManager {
         let usr1: UserData;
         let usr2: UserData;
         if (config) {
+            // has a config arg
             const newConfig = new ConfigManager(config, user1, user2);
             usr1 = newConfig.user1;
             usr2 = newConfig.user2; 
         }
         else if (isUserData(user1) && isUserData(user2)) {
+            // doesn't have a config arg
             usr1 = user1;
             usr2 = user2;
         }
         else {
-            throw new Error("Invalid format unable to use the UserData");
-        }
-        if (!isUserData(user1) || !isUserData(user2)) {
+            // can't even pass a minor test and isn't even a valid UserData type
             throw new Error("Invalid format unable to use the UserData");
         }
         super(usr1, usr2);
@@ -30,4 +35,4 @@ class Battle extends BattleManager {
     }
 }
 
-export { Battle, BattleManager };
+export { Battle, BattleManager, utils };
