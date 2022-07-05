@@ -1,4 +1,5 @@
 import { UserData } from "../structures/User";
+import { convert } from "../utils/convert";
 
 type Configuration = {
     name: string
@@ -17,9 +18,7 @@ class ConfigManager {
 
     }
     static reformatUser(config: Configuration, user: any): UserData {
-        user.name = user[config.name]
-        delete user[config.name]
-        let formatted: UserData = user;
+        let formatted: UserData = convert(user, config);
         return formatted;
     }
 }
