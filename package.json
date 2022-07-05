@@ -1,7 +1,7 @@
 {
   "name": "8-bit-yellow-blast",
   "version": "1.0.0",
-  "description": "8-bit Yellow Blast is a library for organizing combat data. Usually only large-scale game engines provide this sort of functionality partially due to the difficulty of implementing such.",
+  "description": "A library for organizing combat data. Usually only large-scale game engines provide this sort of functionality partially due to the difficulty of implementing such.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
