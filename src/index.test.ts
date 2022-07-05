@@ -1,13 +1,44 @@
 import { Battle } from "./index";
 
 const mockUser = {
-    "name": "Test User"
+    "characterName": "Test User",
+    "class": "thief",
+    "pouch": 9982000,
+    "pvp": false,
+    "inventory": {
+      "weapons": [
+        3
+      ],
+      "consumables": [],
+      "classSkills": [],
+      "otherSkills": []
+    },
+    "health": {
+      "currentHealth": 10,
+      "maxHealth": 10
+    },
+    "level": {
+      "currentLevel": 1
+    },
+    "stats": {
+      "strength": 5,
+      "defense": 5,
+      "speed": 28,
+      "vitality": 10,
+      "intelligence": 5,
+      "magicResistance": 5
+    }
+  }
+
+const mockConfig = {
+    "name": "characterName"
 }
+
 let bat: Battle;
 
 describe('battle system', () => {
     beforeAll(() => {
-        bat = new Battle(mockUser, mockUser);
+        bat = new Battle(mockUser, mockUser, mockConfig);
     })
     it('makes a battle', () => {
         expect(bat).toBeInstanceOf(Battle);
