@@ -7,7 +7,7 @@ Object {
     "currentHealth": 10,
     "maxHealth": 10,
   },
-  "id": "757938182483485954",
+  "id": 757938182483486000,
   "inventory": Object {
     "classSkills": Array [],
     "consumables": Array [],
