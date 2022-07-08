@@ -1,4 +1,5 @@
 import { User, UserData } from "../structures/User";
+import { TurnsManager } from "./TurnsManager"
 
 class Stats {
 
@@ -12,6 +13,15 @@ class Stats {
 }
 
 class BattleManager extends Stats {
+
+    turns: TurnsManager;
+
+    constructor(user1: UserData, user2: UserData) {
+        super(user1, user2)
+        this.turns = new TurnsManager();
+        this.turns.add(user1)
+        this.turns.add(user2)
+    }
 
     attack(user: string, name: string): string {
         return `${user} attacked with ${name}`
