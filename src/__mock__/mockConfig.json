@@ -1,3 +1,4 @@
 {
-    "name": "characterName"
+    "name": "characterName",
+    "id": "discordId"
 }
