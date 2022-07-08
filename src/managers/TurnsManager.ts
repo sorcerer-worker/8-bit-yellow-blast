@@ -33,20 +33,3 @@ class TurnsManager {
 }
 
 export { TurnsManager }
-
-/*
-
-Go into Battle system
-    GET turns bat.turns.getUser(ID) ALT || bat.turns.users.table
-        EACH USER
-            RETURN NAME
-    Go into Battle system # ?getUser(ID).moves
-        GET user USING NAME # Possibly ID
-            GET .moves
-
-
-= = (Battle)
-= = (User) = = (Turns) EACH CANNOT GET DATA FROM SAME LEVEL
-
-
-            */
