@@ -1,10 +1,12 @@
 import { BattleManager } from "./managers/BattleManager";
 import { ConfigManager, Configuration } from "./managers/ConfigManager"
 import { UserData } from "./structures/User";
+import { isUniqueUser } from "./utils/isUniqueUser";
 import { convert } from "./utils/convert";
 
 const utils = {
-    convert
+    isUniqueUser,
+    convert,
 }
 
 function isUserData(user: UserData | any): user is UserData {
