@@ -27,7 +27,10 @@ class Battle extends BattleManager {
             throw new Error("Invalid format unable to use the UserData");
         }
         super(usr1, usr2);
-
+        if (!utils.isUniqueUser(usr1.id, new User(usr2))) {
+            // prevents two users having the same id
+            throw new Error("Invalid a unique id is matching between users");
+        }
     }
 }
 
