@@ -1,6 +1,7 @@
 type UserData = {
-    [key: string]: any;
-    name: string;
+    [key: string]: any,
+    name: string,
+    id: number
 };
 
 class User {
