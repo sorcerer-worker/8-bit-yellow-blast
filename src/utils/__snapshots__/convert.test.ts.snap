@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convert utility tool runs successful conversion 1`] = `
+Object {
+  "class": "warrior",
+  "health": Object {
+    "currentHealth": 10,
+    "maxHealth": 10,
+  },
+  "id": "757938182483485954",
+  "inventory": Object {
+    "classSkills": Array [],
+    "consumables": Array [],
+    "otherSkills": Array [],
+    "weapons": Array [],
+  },
+  "level": Object {
+    "currentLevel": 1,
+  },
+  "name": "Test User",
+  "pouch": 98638,
+  "pvp": false,
+  "stats": Object {
+    "defense": 5,
+    "intelligence": 5,
+    "magicResistance": 5,
+    "speed": 28,
+    "strength": 5,
+    "vitality": 10,
+  },
+}
+`;
