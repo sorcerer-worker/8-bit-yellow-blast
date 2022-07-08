@@ -12,6 +12,6 @@ describe("convert utility tool", () => {
         converted = convert(mockUser, mockConfig)
     })
     it("runs successful conversion", () => {
-        expect(converted).toBeTruthy();
+        expect(converted).toMatchSnapshot();
     })
 })
