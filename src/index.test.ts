@@ -2,13 +2,14 @@ import { Battle } from "./index";
 
 // json files
 import mockUser from "./__mock__/mockUser.json"
+import mockAltUser from "./__mock__/mockAltUser.json"
 import mockConfig from "./__mock__/mockConfig.json"
 
 let bat: Battle;
 
 describe('battle system', () => {
     beforeAll(() => {
-        bat = new Battle(mockUser, mockUser, mockConfig);
+        bat = new Battle(mockUser, mockAltUser, mockConfig);
     })
     it('makes a battle', () => {
         expect(bat).toBeInstanceOf(Battle);
