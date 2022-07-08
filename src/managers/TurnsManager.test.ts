@@ -6,6 +6,7 @@ import { UserData } from "../structures/User";
 function newUserData(mock: object): UserData {
     let formatted: UserData = {
         name: mockUser.characterName,
+        id: mockUser.discordId,
         ...mockUser
     }
     return formatted;
