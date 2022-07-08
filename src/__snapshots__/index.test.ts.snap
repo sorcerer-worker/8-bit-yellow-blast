@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`battle system has turn system integrated into the battle system 1`] = `
+Object {
+  "currentTurn": 0,
+  "turns": Map {
+    0 => "Test User",
+    1 => "Test User",
+  },
+}
+`;
