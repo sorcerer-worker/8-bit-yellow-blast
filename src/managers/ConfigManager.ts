@@ -1,9 +1,6 @@
 import { UserData } from "../structures/User";
-import { convert } from "../utils/convert";
+import { Configuration, convert } from "../utils/convert";
 
-type Configuration = {
-    name: string
-}
 
 class ConfigManager {
 
