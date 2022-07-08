@@ -1,4 +1,4 @@
-import { User, UserData } from "../structures/User";
+import { UserData } from "../structures/User";
 
 type UserId = number;
 
