@@ -5,7 +5,7 @@ Object {
   "currentTurn": 0,
   "turns": Map {
     0 => "Test User",
-    1 => "Test User",
+    1 => "Test User 2",
   },
 }
 `;
