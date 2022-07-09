@@ -10,7 +10,7 @@ type UserWithPosition = [
 class TurnsManager {
 
     turnTableRef: Map<UserId, UserWithPosition> // Adds additional reference to fixed position
-    turnTable: Map<number, string>; // Fixed Positions
+    turnTable: Map<UserWithPosition | number, string>; // Fixed Positions
     currentTurn: number; // Goes through fixed positions
 
     constructor() {
