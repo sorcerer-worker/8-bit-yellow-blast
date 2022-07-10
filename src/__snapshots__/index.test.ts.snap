@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`battle system can use getUserById 1`] = `
+User {
+  "data": Object {
+    "class": "warrior",
+    "health": Object {
+      "currentHealth": 10,
+      "maxHealth": 10,
+    },
+    "id": 757938182483486000,
+    "inventory": Object {
+      "classSkills": Array [],
+      "consumables": Array [],
+      "otherSkills": Array [],
+      "weapons": Array [],
+    },
+    "isTurn": true,
+    "level": Object {
+      "currentLevel": 1,
+    },
+    "name": "Test User",
+    "pouch": 98638,
+    "pvp": false,
+    "stats": Object {
+      "defense": 5,
+      "intelligence": 5,
+      "magicResistance": 5,
+      "speed": 28,
+      "strength": 5,
+      "vitality": 10,
+    },
+  },
+}
+`;
+
+exports[`battle system has integrated turn system 1`] = `
+Object {
+  "currentTurn": 0,
+  "turns": Map {
+    0 => "Test User",
+    1 => "Test User 2",
+  },
+}
+`;
+
 exports[`battle system has turn system integrated into the battle system 1`] = `
 Object {
   "currentTurn": 0,
