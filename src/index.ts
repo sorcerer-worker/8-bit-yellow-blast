@@ -6,6 +6,13 @@ import utils from "./utils"
 function isUserData(user: UserData | any): user is UserData {
     return user.name !== undefined;
 }
+
+// function isUser(user: User | any): User{
+//     if (user instanceof User) {
+//         return User(user.data)
+//     } 
+// }
+
 class Battle extends BattleManager {
 
     constructor(user1: UserData | object, user2: UserData| object, config: Configuration | undefined = undefined) {
@@ -31,6 +38,26 @@ class Battle extends BattleManager {
             // prevents two users having the same id
             throw new Error("Invalid a unique id is matching between users");
         }
+    }
+
+    getUserById(id: number) {
+        let userInstance: User | Object = {};
+        [this.user1, this.user2]
+            .every(user => {
+                if (user.data.id == id) {
+                    userInstance = user;
+                }
+            })
+        if (userInstance instanceof User) {
+            const ref = this.turns.turnTableRef.get(id); // [name, count] typeof object
+            if (ref instanceof Object) {
+              userInstance.data.isTurn = this.turns.currentTurn == ref[1]
+            }
+            else {
+                userInstance.data.isTurn = null;
+            }
+        }
+        return userInstance;
     }
 }
 
