@@ -25,11 +25,19 @@ class User {
     get name(): string{
         return this.data.name;
     }
-    get currentHealth() {
+    get currentHealth(): number {
         return this.data.health.currentHealth
     }
     set currentHealth(amount: number) {
         this.data.health.currentHealth = amount
+        if (this.prevent.overload.hp) {
+            if (this.currentHealth > this.data.health.maxHealth) {
+                this.currentHealth = this.data.health.maxHealth;
+            }
+            if (this.currentHealth < 0) {
+                this.currentHealth = 0
+            }
+        }
     }
 }
 
