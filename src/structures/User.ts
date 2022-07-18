@@ -4,9 +4,20 @@ type UserData = {
     id: number
 };
 
+interface ForceUserPrevent {
+    overload: {
+        hp: boolean
+    }
+}
+
 class User {
 
     data: UserData;
+    prevent: ForceUserPrevent = {
+        overload: {
+            hp: true
+        }
+    };
 
     constructor(data: UserData) {
         this.data = data;
