@@ -14,8 +14,8 @@ describe('battle system', () => {
     it('makes a battle', () => {
         expect(bat).toBeInstanceOf(Battle);
     })
-    it('has a user attack', () => {
-        expect(bat.attack(bat.user1.name, "Punch")).toBe("Test User attacked with Punch");
+    it('has the ability to control user actions', () => {
+        expect(bat.user1.actions.use).toBeTruthy()
     })
     it('has integrated turn system', () => {
         expect(bat.turns.users).toMatchSnapshot();

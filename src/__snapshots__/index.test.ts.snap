@@ -2,6 +2,9 @@
 
 exports[`battle system can use getUserById 1`] = `
 User {
+  "actions": ActionManager {
+    "moves": Array [],
+  },
   "data": Object {
     "class": "warrior",
     "health": Object {
@@ -29,6 +32,11 @@ User {
       "speed": 28,
       "strength": 5,
       "vitality": 10,
+    },
+  },
+  "prevent": Object {
+    "overload": Object {
+      "hp": true,
     },
   },
 }
