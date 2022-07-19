@@ -18,7 +18,7 @@ class Battle extends BattleManager {
      * @param {UserData} user2  The second `User`
      * @param {Configuration} config Optional configuration parameter
      */
-    constructor(user1: UserData | object, user2: UserData| object, config: Configuration | undefined = undefined) {
+    constructor(user1: UserData, user2: UserData, config?: Configuration) {
         let usr1: UserData;
         let usr2: UserData;
         if (config) {
