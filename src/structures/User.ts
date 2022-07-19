@@ -1,14 +1,13 @@
-type UserData = {
+/**
+ * Represents the `UserData` type used by `User``.
+ */
+export type UserData = {
     [key: string]: any,
     name: string,
     id: number
 };
 
-
-/**
- * .
- */
-interface ForceUserPrevent {
+export interface ForceUserPrevent {
     /**
      * Prevents forms of overload.
      */
@@ -23,7 +22,7 @@ interface ForceUserPrevent {
 /**
  * Represents a `User` using the `BattleManager`.
  */
-class User {
+export class User {
 
     data: UserData;
     prevent: ForceUserPrevent = {
@@ -34,6 +33,7 @@ class User {
 
     /**
      * Builds a new `User` using `UserData`.
+     * @param {data} UserData  Object based data about the `User`
      */
     constructor(data: UserData) {
         this.data = data;
@@ -41,16 +41,16 @@ class User {
     /**
      * Returns the `User`'s name property.
      */
-    get name(): string{
+    public get name(): string{
         return this.data.name;
     }
     /**
      * Returns the `User`'s currentHealth.
      */
-    get currentHealth(): number {
+    public get currentHealth(): number {
         return this.data.health.currentHealth
     }
-    set currentHealth(amount: number) {
+    public set currentHealth(amount: number) {
         this.data.health.currentHealth = amount
         if (this.prevent.overload.hp) {
             if (this.currentHealth > this.data.health.maxHealth) {
@@ -62,5 +62,3 @@ class User {
         }
     }
 }
-
-export { User, UserData }
