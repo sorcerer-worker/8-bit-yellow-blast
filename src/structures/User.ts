@@ -4,12 +4,25 @@ type UserData = {
     id: number
 };
 
+
+/**
+ * .
+ */
 interface ForceUserPrevent {
+    /**
+     * Prevents forms of overload.
+     */
     overload: {
+        /**
+         * Represents Health.
+         */
         hp: boolean
     }
 }
 
+/**
+ * Represents a `User` using the `BattleManager`.
+ */
 class User {
 
     data: UserData;
@@ -19,12 +32,21 @@ class User {
         }
     };
 
+    /**
+     * Builds a new `User` using `UserData`.
+     */
     constructor(data: UserData) {
         this.data = data;
     }
+    /**
+     * Returns the `User`'s name property.
+     */
     get name(): string{
         return this.data.name;
     }
+    /**
+     * Returns the `User`'s currentHealth.
+     */
     get currentHealth(): number {
         return this.data.health.currentHealth
     }
