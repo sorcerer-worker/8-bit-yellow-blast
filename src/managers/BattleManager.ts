@@ -37,8 +37,4 @@ export class BattleManager extends Stats {
         this.turns.add(user1)
         this.turns.add(user2)
     }
-
-    attack(user: string, name: string): string {
-        return `${user} attacked with ${name}`
-    }  
 }
