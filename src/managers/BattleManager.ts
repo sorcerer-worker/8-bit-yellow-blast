@@ -4,10 +4,10 @@ import { TurnsManager } from "./TurnsManager"
 /**
  * Base class for `BattleManager` it keeps track of Stat information.
  */
-class Stats {
+export class Stats {
 
-    user1: User;
-    user2: User;
+    public user1: User;
+    public user2: User;
     /**
      * Uses two copies of `UserData` object to contain the stat-related data for the two.
      * @param {UserData} user1  The first `User`
@@ -22,9 +22,9 @@ class Stats {
 /**
  * Manages battles and imports many thing required for such.
  */
-class BattleManager extends Stats {
+export class BattleManager extends Stats {
 
-    turns: TurnsManager;
+    public turns: TurnsManager;
 
     /**
      * Uses two copies of `UserData` object to generate a battle between the two.
@@ -42,5 +42,3 @@ class BattleManager extends Stats {
         return `${user} attacked with ${name}`
     }  
 }
-
-export { BattleManager };
