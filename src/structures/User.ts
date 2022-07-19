@@ -33,7 +33,7 @@ export class User {
 
     /**
      * Builds a new `User` using `UserData`.
-     * @param {data} UserData  Object based data about the `User`
+     * @param {UserData} data  Object based data about the `User`
      */
     constructor(data: UserData) {
         this.data = data;
