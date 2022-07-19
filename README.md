@@ -1,7 +1,7 @@
 # 8-bit-yellow-blast
 
 [![Build Status](https://img.shields.io/github/workflow/status/sorcerer-worker/8-bit-yellow-blast/CI?style=flat-square)](https://github.com/sorcerer-worker/8-bit-yellow-blast/actions/workflows/main.yml)
-![Release](https://img.shields.io/badge/release-1.1.0-%23007ACC.svg?style=flat-square)
+![Release](https://img.shields.io/badge/release-1.2.0-%23007ACC.svg?style=flat-square)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/sorcerer-worker/8-bit-yellow-blast/actions/workflows/main.yml)
 [![Works On My Machine Joke](https://img.shields.io/badge/works%20on-MY%20MACHINE-%23007ACC?style=flat-square)](https://img.shields.io/badge/Yes-It's%20a%20Joke%20of%20course%20otherwise%20it%20wouldn't%20pass%20github%20tests%20on%20their%20runtime%20repeatedly-%23007ACC?style=flat-square)
 

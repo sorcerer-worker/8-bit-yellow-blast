@@ -7,15 +7,18 @@ function isUserData(user: UserData | any): user is UserData {
     return user.name !== undefined;
 }
 
-// function isUser(user: User | any): User{
-//     if (user instanceof User) {
-//         return User(user.data)
-//     } 
-// }
-
+/**
+ * Manages the use of the library as a whole along with all Battles
+ */
 class Battle extends BattleManager {
-
-    constructor(user1: UserData | object, user2: UserData| object, config: Configuration | undefined = undefined) {
+    
+    /**
+     * Uses two copies of `UserData` object to generate a battle between the two along with a additional optional argument for configuration.
+     * @param {UserData} user1  The first `User`
+     * @param {UserData} user2  The second `User`
+     * @param {Configuration} config Optional configuration parameter
+     */
+    constructor(user1: UserData | object, user2: UserData | object, config?: Configuration) {
         let usr1: UserData;
         let usr2: UserData;
         if (config) {
@@ -40,7 +43,12 @@ class Battle extends BattleManager {
         }
     }
 
-    getUserById(id: number) {
+    /**
+     * Finds a user by their id number.
+     * @param {number} id  The `User`'s Id
+     * @returns {User | undefined} Either it finds a `User` or nothing at all
+     */
+    public getUserById(id: number) {
         let userInstance: User | Object = {};
         [this.user1, this.user2]
             .every(user => {
