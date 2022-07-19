@@ -31,10 +31,21 @@ export class ActionManager {
             return new Move(move.name, move.rating, move.type)
         })
     }
-    public use(moveNum: number) {
+    /**
+     * Allows a `Move` to be specified 
+     * @param {number} moveNum The `Move`'s number associated with it in the array
+     */
+    public use(moveNum: number): this {
         this.targetMove = this.moves[moveNum];
         return this;
     }
+    /**
+     * 
+     */
+    /**
+     * Allows a `User` to be specified 
+     * @param {User} user The `User` meant to be targeted
+     */
     public blast(user: User) {
         if (this.targetMove) {
             const {name, rating, type} = this.targetMove
