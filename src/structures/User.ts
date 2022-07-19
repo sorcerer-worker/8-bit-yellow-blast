@@ -1,3 +1,5 @@
+import { ActionManager } from "../managers/ActionManager";
+
 /**
  * Represents the `UserData` type used by `User``.
  */
@@ -24,8 +26,9 @@ export interface ForceUserPrevent {
  */
 export class User {
 
-    data: UserData;
-    prevent: ForceUserPrevent = {
+    public data: UserData;
+    public actions: ActionManager;
+    public prevent: ForceUserPrevent = {
         overload: {
             hp: true
         }
@@ -37,6 +40,7 @@ export class User {
      */
     constructor(data: UserData) {
         this.data = data;
+        this.actions = new ActionManager([]); // <-- Planning to pass this information through this.data
     }
     /**
      * Returns the `User`'s name property.
