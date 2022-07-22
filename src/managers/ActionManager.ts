@@ -46,7 +46,7 @@ export class ActionManager {
      * Allows a `User` to be specified 
      * @param {User} user The `User` meant to be targeted
      */
-    public blast(user: User) {
+    public blast(user: User) { // <-- TODO: This could be upgraded to provide better stat manipulation  
         if (this.targetMove) {
             const {name, rating, type} = this.targetMove
             switch (this.targetMove.type) {
