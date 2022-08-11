@@ -48,6 +48,7 @@ export class ActionManager {
      */
     public blast(user: User) { // <-- TODO: This could be upgraded to provide better stat manipulation  
         if (this.targetMove) {
+            this.beforeBlast()
             const {name, rating, type} = this.targetMove
             switch (this.targetMove.type) {
                 case MoveType.Heals:
@@ -69,5 +70,11 @@ export class ActionManager {
             }
         }
         throw Error("No particular Move previously specified.")
+    }
+    /**
+	 * An event that executes before any `.blast()` method is ran it allows data to be manipulated prior to being used
+	 */
+     public beforeBlast() {
+        
     }
 }
