@@ -33,4 +33,16 @@ describe("action manager", () => {
             .use(1)
             .blast(userInstance)
     })
+    it("can make events", () => {
+        const userInstance = new User(mockAltUser);
+        let works = false;
+        manager
+            .before("blast", () => {
+                works = true;
+            })
+        manager
+            .use(1)
+            .blast(userInstance)
+        expect(works).toBeTruthy()
+    })
 })
