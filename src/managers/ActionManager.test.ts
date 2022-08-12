@@ -36,11 +36,10 @@ describe("action manager", () => {
     it("can make events", () => {
         const userInstance = new User(mockAltUser);
         let works = false;
-        manager
+        manager // now with chained methods
             .before("blast", () => {
                 works = true;
             })
-        manager
             .use(1)
             .blast(userInstance)
         expect(works).toBeTruthy()
