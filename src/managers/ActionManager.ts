@@ -89,7 +89,7 @@ export class ActionManager {
         switch (event) {
             case "blast":
                 this.beforeBlast = func;
-                break
+                return this
             default:
                 throw Error("Invalid Event")
         }
