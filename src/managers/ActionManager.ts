@@ -7,11 +7,16 @@ export interface MoveData {
     type: MoveType;
 }
 
+type Event = "blast"
+
+type EventFunc = ( ...args: any ) => void
+
 /**
  * Manages all direct actions between players.
  */
 export class ActionManager {
     
+    public beforeBlast: EventFunc | undefined
     public moves: Move[];
     private targetMove: Move | undefined;
     /**
@@ -20,6 +25,7 @@ export class ActionManager {
 	 */
     constructor(moves: MoveData[]) {
         this.moves = this._updateMoves(moves)
+        this.beforeBlast = undefined;
     }
     /**
 	 * Turns `MoveData[]` into `Move[]` objects
@@ -48,7 +54,10 @@ export class ActionManager {
      */
     public blast(user: User) { // <-- TODO: This could be upgraded to provide better stat manipulation  
         if (this.targetMove) {
-            this.beforeBlast()
+            // Run .before("blast") event if exists
+            if (this.beforeBlast) {
+                this.beforeBlast()
+            }
             const {name, rating, type} = this.targetMove
             switch (this.targetMove.type) {
                 case MoveType.Heals:
@@ -74,7 +83,13 @@ export class ActionManager {
     /**
 	 * An event that executes before any `.blast()` method is ran it allows data to be manipulated prior to being used
 	 */
-     public beforeBlast() {
-        
+    public before(event: Event, func: EventFunc) {
+        switch (event) {
+            case "blast":
+                this.beforeBlast = func;
+                break
+            default:
+                throw Error("Invalid Event")
+        }
     }
 }
