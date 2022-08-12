@@ -7,7 +7,7 @@ export interface MoveData {
     type: MoveType;
 }
 
-type Event = "blast"
+type Event = "blast" | "use"
 
 type EventFunc = ( ...args: any ) => void
 
@@ -17,6 +17,7 @@ type EventFunc = ( ...args: any ) => void
 export class ActionManager {
     
     public beforeBlast: EventFunc | undefined
+    public beforeUse: EventFunc | undefined
     public moves: Move[];
     private targetMove: Move | undefined;
     /**
@@ -26,6 +27,7 @@ export class ActionManager {
     constructor(moves: MoveData[]) {
         this.moves = this._updateMoves(moves)
         this.beforeBlast = undefined;
+        this.beforeUse = undefined;
     }
     /**
 	 * Turns `MoveData[]` into `Move[]` objects
@@ -42,12 +44,12 @@ export class ActionManager {
      * @param {number} moveNum The `Move`'s number associated with it in the array
      */
     public use(moveNum: number): this {
+        if (this.beforeUse) {
+            this.beforeUse()
+        }
         this.targetMove = this.moves[moveNum];
         return this;
     }
-    /**
-     * 
-     */
     /**
      * Allows a `User` to be specified 
      * @param {User} user The `User` meant to be targeted
@@ -85,10 +87,13 @@ export class ActionManager {
      * @param {Event} event The `Event` meant to be targeted
      * @param {EventFunction} func The `EventFunction` meant to be used when the event is called
 	 */
-    public before(event: Event, func: EventFunc) {
+    public before(event: Event, func: EventFunc): this {
         switch (event) {
             case "blast":
                 this.beforeBlast = func;
+                return this
+            case "use":
+                this.beforeUse = func;
                 return this
             default:
                 throw Error("Invalid Event")
