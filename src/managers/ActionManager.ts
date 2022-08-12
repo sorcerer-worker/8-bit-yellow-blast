@@ -81,7 +81,9 @@ export class ActionManager {
         throw Error("No particular Move previously specified.")
     }
     /**
-	 * An event that executes before any `.blast()` method is ran it allows data to be manipulated prior to being used
+	 * An event that executes before a specified method is ran it allows data to be manipulated prior to being used
+     * @param {Event} event The `Event` meant to be targeted
+     * @param {EventFunction} func The `EventFunction` meant to be used when the event is called
 	 */
     public before(event: Event, func: EventFunc) {
         switch (event) {
