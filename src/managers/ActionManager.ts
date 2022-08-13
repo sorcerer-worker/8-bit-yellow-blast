@@ -8,18 +8,39 @@ export interface MoveData {
 }
 
 type Event = "blast" | "use"
-
 type EventFunc = ( ...args: any ) => void
+export interface Events {
+    /**
+     * Events that can be ran before.
+     */
+    before: {
+        blast: EventFunc | undefined,
+        use: EventFunc | undefined
+    },
+    /**
+     * Events that can be ran after.
+     */
+    after: {
+        blast: EventFunc | undefined,
+        use: EventFunc | undefined
+    }
+}
 
 /**
  * Manages all direct actions between players.
  */
 export class ActionManager {
     
-    public beforeBlast: EventFunc | undefined
-    public beforeUse: EventFunc | undefined
-    public afterBlast: EventFunc | undefined
-    public afterUse: EventFunc | undefined
+    public events: Events = {
+        before: {
+            blast: undefined,
+            use: undefined
+        },
+        after: {
+            blast: undefined,
+            use: undefined
+        }
+    }
     public moves: Move[];
     private targetMove: Move | undefined;
     /**
@@ -28,8 +49,6 @@ export class ActionManager {
 	 */
     constructor(moves: MoveData[]) {
         this.moves = this._updateMoves(moves)
-        this.beforeBlast = undefined;
-        this.beforeUse = undefined;
     }
     /**
 	 * Turns `MoveData[]` into `Move[]` objects
@@ -46,12 +65,12 @@ export class ActionManager {
      * @param {number} moveNum The `Move`'s number associated with it in the array
      */
     public use(moveNum: number): this {
-        if (this.beforeUse) {
-            this.beforeUse()
+        if (this.events.before.use) {
+            this.events.before.use()
         }
         this.targetMove = this.moves[moveNum];
-        if (this.afterUse) {
-            this.afterUse()
+        if (this.events.after.use) {
+            this.events.after.use()
         }
         return this;
     }
@@ -62,8 +81,8 @@ export class ActionManager {
     public blast(user: User) { // <-- TODO: This could be upgraded to provide better stat manipulation  
         if (this.targetMove) {
             // Run .before("blast") event if exists
-            if (this.beforeBlast) {
-                this.beforeBlast()
+            if (this.events.before.blast) {
+                this.events.before.blast()
             }
             const {name, rating, type} = this.targetMove
             switch (this.targetMove.type) {
@@ -80,8 +99,8 @@ export class ActionManager {
                 case MoveType.Heals:
                 case MoveType.Damages:
                 case MoveType.Restores:
-                    if (this.afterBlast) {
-                        this.afterBlast()
+                    if (this.events.after.blast) {
+                        this.events.after.blast()
                     }
                     return this;
                 default:
@@ -99,10 +118,10 @@ export class ActionManager {
      public before(event: Event, func: EventFunc): this {
         switch (event) {
             case "blast":
-                this.beforeBlast = func;
+                this.events.before.blast = func;
                 return this;
             case "use":
-                this.beforeUse = func;
+                this.events.before.use = func;
                 return this;
             default:
                 throw Error("Invalid Event")
@@ -116,10 +135,10 @@ export class ActionManager {
     public after(event: Event, func: EventFunc): this {
         switch (event) {
             case "blast":
-                this.afterBlast = func;
+                this.events.after.blast = func;
                 return this;
             case "use":
-                this.afterUse = func;
+                this.events.after.use = func;
                 return this;
             default:
                 throw Error("Invalid Event")
