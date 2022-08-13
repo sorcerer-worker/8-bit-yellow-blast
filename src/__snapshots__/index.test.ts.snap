@@ -3,7 +3,16 @@
 exports[`battle system can use getUserById 1`] = `
 User {
   "actions": ActionManager {
-    "beforeBlast": undefined,
+    "events": Object {
+      "after": Object {
+        "blast": undefined,
+        "use": undefined,
+      },
+      "before": Object {
+        "blast": undefined,
+        "use": undefined,
+      },
+    },
     "moves": Array [],
   },
   "data": Object {
