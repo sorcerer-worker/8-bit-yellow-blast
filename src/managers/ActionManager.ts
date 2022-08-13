@@ -18,6 +18,8 @@ export class ActionManager {
     
     public beforeBlast: EventFunc | undefined
     public beforeUse: EventFunc | undefined
+    public afterBlast: EventFunc | undefined
+    public afterUse: EventFunc | undefined
     public moves: Move[];
     private targetMove: Move | undefined;
     /**
@@ -48,6 +50,9 @@ export class ActionManager {
             this.beforeUse()
         }
         this.targetMove = this.moves[moveNum];
+        if (this.afterUse) {
+            this.afterUse()
+        }
         return this;
     }
     /**
@@ -64,17 +69,21 @@ export class ActionManager {
             switch (this.targetMove.type) {
                 case MoveType.Heals:
                     user.currentHealth += rating
-                    return this;
             
                 case MoveType.Damages:
                     user.currentHealth -= rating
-                    return this;
         
                 case MoveType.Restores:
                     // May be removed in the near future given possible uselessness
                     user.currentHealth = rating
-                    return this;
                 
+                case MoveType.Heals:
+                case MoveType.Damages:
+                case MoveType.Restores:
+                    if (this.afterBlast) {
+                        this.afterBlast()
+                    }
+                    return this;
                 default:
                     throw Error("Invalid MoveType")
                     break;
@@ -87,14 +96,31 @@ export class ActionManager {
      * @param {Event} event The `Event` meant to be targeted
      * @param {EventFunction} func The `EventFunction` meant to be used when the event is called
 	 */
-    public before(event: Event, func: EventFunc): this {
+     public before(event: Event, func: EventFunc): this {
         switch (event) {
             case "blast":
                 this.beforeBlast = func;
-                return this
+                return this;
             case "use":
                 this.beforeUse = func;
-                return this
+                return this;
+            default:
+                throw Error("Invalid Event")
+        }
+    }
+    /**
+	 * An event that executes after a specified method is ran it allows data to be manipulated after it was used
+     * @param {Event} event The `Event` meant to be targeted
+     * @param {EventFunction} func The `EventFunction` meant to be used when the event is called
+	 */
+    public after(event: Event, func: EventFunc): this {
+        switch (event) {
+            case "blast":
+                this.afterBlast = func;
+                return this;
+            case "use":
+                this.afterUse = func;
+                return this;
             default:
                 throw Error("Invalid Event")
         }
