@@ -7,8 +7,8 @@ export interface MoveData {
     type: MoveType;
 }
 
-type Event = "blast" | "use"
-type EventFunc = ( ...args: any ) => void
+export type Event = "blast" | "use"
+export type EventFunc = ( ...args: any ) => void
 export interface Events {
     /**
      * Events that can be ran before.
@@ -113,7 +113,7 @@ export class ActionManager {
     /**
 	 * An event that executes before a specified method is ran it allows data to be manipulated prior to being used
      * @param {Event} event The `Event` meant to be targeted
-     * @param {EventFunction} func The `EventFunction` meant to be used when the event is called
+     * @param {EventFunc} func The `EventFunction` meant to be used when the event is called
 	 */
      public before(event: Event, func: EventFunc): this {
         switch (event) {
@@ -130,7 +130,7 @@ export class ActionManager {
     /**
 	 * An event that executes after a specified method is ran it allows data to be manipulated after it was used
      * @param {Event} event The `Event` meant to be targeted
-     * @param {EventFunction} func The `EventFunction` meant to be used when the event is called
+     * @param {EventFunc} func The `EventFunction` meant to be used when the event is called
 	 */
     public after(event: Event, func: EventFunc): this {
         switch (event) {
