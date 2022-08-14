@@ -111,6 +111,19 @@ export class ActionManager {
         throw Error("No particular Move previously specified.")
     }
     /**
+     * Allows a `Function` to be specified that executes instead of typical `.blast()` functionality
+     * @param {Function} func The `Function` meant to be used instead
+     */
+    public customBlast(func: (targetMove: Move | undefined) => {}) {  
+        try {
+            func(this.targetMove) // wrapped
+        }
+        catch {
+            throw Error("customBlast returned a error due to the function passed")
+        }
+        return this;
+    }
+    /**
 	 * An event that executes before a specified method is ran it allows data to be manipulated prior to being used
      * @param {Event} event The `Event` meant to be targeted
      * @param {EventFunc} func The `EventFunction` meant to be used when the event is called
