@@ -28,7 +28,7 @@ export class User {
 
     public data: UserData;
     public actions: ActionManager;
-    public prevent: ForceUserPrevent = {
+    public prevent: ForceUserPrevent = { // <-- TODO: It could use additional prevention options
         overload: {
             hp: true
         }
